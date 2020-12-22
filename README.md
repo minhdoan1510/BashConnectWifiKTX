@@ -2,7 +2,7 @@
 
 Login account
 ```sh
-$ bash wifi.sh login $username $password
+$ bash wifi.sh login ${username} ${password}
 ```
 Logout account
 ```sh
