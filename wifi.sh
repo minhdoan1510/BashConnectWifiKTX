@@ -1,7 +1,13 @@
 #!/bin/bash
+
 if [ $1 == "login" ]
 then
-    res=$(curl --location --request POST 'https://login.net.vn/login' --data-urlencode 'dst2=http://www.gstatic.com/generate_204' --data-urlencode 'dst=http://www.gstatic.com/generate_204' --data-urlencode 'popup=true' --data-urlencode "username=$2" --data-urlencode "password=$3")
+    res=$(curl --location --request POST 'https://login.net.vn/login' \
+    		--data-urlencode 'dst2=http://www.gstatic.com/generate_204' \
+    		--data-urlencode 'dst=http://www.gstatic.com/generate_204' \
+    		--data-urlencode 'popup=true' \
+    		--data-urlencode "username=$2" \
+    		--data-urlencode "password=$3")
     title=$(echo "$res" | grep -oP "\<title\>(.*?)\<\/title\>")
     account=$(echo "$res" | grep -oP "You are already logged in - access denied")
     if [ $title == '<title>redirect</title>' ]
