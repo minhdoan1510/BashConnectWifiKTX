@@ -12,19 +12,19 @@ then
     account=$(echo "$res" | grep -oP "You are already logged in - access denied")
     if [ $title == '<title>redirect</title>' ]
     then
-        notify-send 'wifi' "Đăng nhập tài khoản $2 thành công"
+	cscript MessageBox.vbs "Đăng nhập tài khoản $2 thành công"
     else
         if [ ${#account} == 0 ]
         then
-            notify-send 'wifi' "Sai tài khoản hoặc mật khẩu: $2|$3"
+		cscript MessageBox.vbs "Sai tài khoản hoặc mật khẩu: $2|$3"
         else
-            notify-send 'wifi' "Tài khoản $2 đã được đăng nhập ở thiết bị khác"
+		cscript MessageBox.vbs "Tài khoản $2 đã được đăng nhập ở thiết bị khác"
         fi
     fi
 elif [ $1 == "logout" ]
 then
-    curl --location GET 'https://login.net.vn/logout'
-    notify-send 'wifi' "Đăng xuất tài khoản thành công"
+	curl --location GET 'https://login.net.vn/logout'
+	cscript MessageBox.vbs "Đăng xuất tài khoản thành công"
 else
-    notify-send 'wifi' "Chưa nhận được lệnh wifi"
+	cscript MessageBox.vbs "Chưa nhận được lệnh wifi"
 fi
